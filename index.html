@@ -35,8 +35,16 @@
     //Call geocode
     //geocode();
 
-    function geocode() {
-      var location = 'Kyiv Vladimirskaya 12';
+    //Get location form
+    var locationForm = document.getElementById('location-form');
+    locationForm.addEventListener('submit', geocode);
+
+
+    function geocode(e) {
+      //Prevent actual submit
+      e.preventDefault();
+
+      var location = document.getElementById('location-input').value;
       axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
           address: location,
